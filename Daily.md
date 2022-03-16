@@ -44,6 +44,11 @@
  $~ git pull origin master
  
  -----------------  Date: 16 March 2022 ----------------------------------
+ #Step 13 - Crear la nueva migraciòn de la tabla productos con sus campos <br>
+ $~ php artisan make:migration productos
+ 
+ #Step 13 - Creamos el modelo junto con el controlados y los recursos (-mcr)
+ $~ php artisan make:model Productos -mcr
  
  -----------------  Date: 17 March 2022 ----------------------------------
  
