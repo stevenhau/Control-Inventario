@@ -66,6 +66,13 @@ $~ php artisan route:list
 
 #Step 18 - Se utilizo el metodo "store" dentro del controlador de productos para recepcion de datos <br>
 
+      $datosProductos = request()->except('_token');
+              if($request->hasFile('imagen')){
+                  $datosProductos['imagen']=$request->file('imagen')->store('uploads','public');
+              }
+              Productos::insert($datosProductos);
+              return response()->json($datosProductos);
+<br>
 #Step 19 - Dentro del metodo "index" se pasaron los datos traidos desde el modelo Productos, utilizando las funciones predeterminadas de laravel 
 para poder listarlas dentro de la vista index con una paginacion de 5. <br>
 
