@@ -50,7 +50,7 @@
  #Step 13 - Creamos el modelo junto con el controlados y los recursos (-mcr)
  $~ php artisan make:model Productos -mcr
  
- -----------------  Date: 20 March 2022 ----------------------------------
+ -----------------  Date: 20 March 2022 ---------------------------------- <br>
  #Step 14 - Se creo una carpeta llamada productos con archivos blade para las vistas (crear, editar e index) 
  $~ cd resources/views/
  $~ mkdir productos
