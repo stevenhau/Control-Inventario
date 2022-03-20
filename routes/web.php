@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProductosController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,9 +18,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+//Esta es la forma de hacerlo especificando cada ruta clase segudo del metodo
+/* Route::get('/productos/create', [App\Http\Controllers\ProductosController::class, 'create']);
 Auth::routes();
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home'); */
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Auth::routes();
+//Esta forma agrega todas las rutas segun los metodos creados en el controlador puedes comprobarlo con "php artisan route:list"
+Route::resource('productos',ProductosController::class); 
 
 Auth::routes();
 

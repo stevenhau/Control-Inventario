@@ -15,6 +15,8 @@ class ProductosController extends Controller
     public function index()
     {
         //
+        $productos['productos']=Productos::paginate(5);
+        return view('productos.index',$productos);
     }
 
     /**
@@ -24,7 +26,8 @@ class ProductosController extends Controller
      */
     public function create()
     {
-        //
+        //relacionando con la vista
+        return view('productos.create');
     }
 
     /**
@@ -35,7 +38,13 @@ class ProductosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //Aqui se recepcionan los datos desde el formulario de la vista (productos/crear))
+        $datosProductos = request()->except('_token');
+        if($request->hasFile('imagen')){
+            $datosProductos['imagen']=$request->file('imagen')->store('uploads','public');
+        }
+        Productos::insert($datosProductos);
+        return response()->json($datosProductos);
     }
 
     /**
@@ -78,8 +87,10 @@ class ProductosController extends Controller
      * @param  \App\Models\Productos  $productos
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Productos $productos)
+    public function destroy($id)
     {
         //
+        Productos::destroy($id);
+        return redirect('productos');
     }
 }
