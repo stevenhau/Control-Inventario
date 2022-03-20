@@ -50,9 +50,24 @@
  #Step 13 - Creamos el modelo junto con el controlados y los recursos (-mcr)
  $~ php artisan make:model Productos -mcr
  
- -----------------  Date: 17 March 2022 ----------------------------------
+ -----------------  Date: 20 March 2022 ----------------------------------
+ #Step 14 - Se creo una carpeta llamada productos con archivos blade para las vistas (crear, editar e index) 
+ $~ cd resources/views/
+ $~ mkdir productos
+ $~ touch create.blade.php, edit.blade.php, index.blade.php
  
- -----------------  Date: 18 March 2022 ----------------------------------
+ #Step 15 - Se creo un formulario html en la vista para recepcion de datos
  
- -----------------  Date: 19 March 2022 ----------------------------------
-  
+ #Step 16 - se agregaron las rutas para acceder a los metodos de la clase controlador (dentro del archivo /routes/web.php)
+ Route::resource('productos',ProductosController::class);
+
+#Step 17 - se verificaron las rutas desde la terminal - (con este comando se ven las rutas y los metodos a utilizar)
+$~ php artisan route:list
+
+#Step 18 - Se utilizo el metodo "store" dentro del controlador de productos para recepcion de datos
+
+#Step 19 - Dentro del metodo "index" se pasaron los datos traidos desde el modelo Productos, utilizando las funciones predeterminadas de laravel 
+para poder listarlas dentro de la vista index con una paginacion de 5.
+
+        $productos['productos']=Productos::paginate(5);
+        return view('productos.index',$productos);
