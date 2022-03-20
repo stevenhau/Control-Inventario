@@ -56,18 +56,18 @@
  $~ mkdir productos
  $~ touch create.blade.php, edit.blade.php, index.blade.php
  
- #Step 15 - Se creo un formulario html en la vista para recepcion de datos
+ #Step 15 - Se creo un formulario html en la vista para recepcion de datos <br>
  
- #Step 16 - se agregaron las rutas para acceder a los metodos de la clase controlador (dentro del archivo /routes/web.php)
+ #Step 16 - se agregaron las rutas para acceder a los metodos de la clase controlador (dentro del archivo /routes/web.php) <br>
  Route::resource('productos',ProductosController::class);
 
-#Step 17 - se verificaron las rutas desde la terminal - (con este comando se ven las rutas y los metodos a utilizar)
+#Step 17 - se verificaron las rutas desde la terminal - (con este comando se ven las rutas y los metodos a utilizar) <br>
 $~ php artisan route:list
 
-#Step 18 - Se utilizo el metodo "store" dentro del controlador de productos para recepcion de datos
+#Step 18 - Se utilizo el metodo "store" dentro del controlador de productos para recepcion de datos <br>
 
 #Step 19 - Dentro del metodo "index" se pasaron los datos traidos desde el modelo Productos, utilizando las funciones predeterminadas de laravel 
-para poder listarlas dentro de la vista index con una paginacion de 5.
+para poder listarlas dentro de la vista index con una paginacion de 5. <br>
 
         $productos['productos']=Productos::paginate(5);
         return view('productos.index',$productos);
