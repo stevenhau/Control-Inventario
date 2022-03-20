@@ -51,15 +51,15 @@
  $~ php artisan make:model Productos -mcr
  
  -----------------  Date: 20 March 2022 ---------------------------------- <br>
- #Step 14 - Se creo una carpeta llamada productos con archivos blade para las vistas (crear, editar e index) 
- $~ cd resources/views/
- $~ mkdir productos
- $~ touch create.blade.php, edit.blade.php, index.blade.php
+ #Step 14 - Se creo una carpeta llamada productos con archivos blade para las vistas (crear, editar e index) <br>
+ $~ cd resources/views/ <br>
+ $~ mkdir productos <br>
+ $~ touch create.blade.php, edit.blade.php, index.blade.php <br>
  
  #Step 15 - Se creo un formulario html en la vista para recepcion de datos <br>
  
  #Step 16 - se agregaron las rutas para acceder a los metodos de la clase controlador (dentro del archivo /routes/web.php) <br>
- Route::resource('productos',ProductosController::class);
+ Route::resource('productos',ProductosController::class); <br>
 
 #Step 17 - se verificaron las rutas desde la terminal - (con este comando se ven las rutas y los metodos a utilizar) <br>
 $~ php artisan route:list
