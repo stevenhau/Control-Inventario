@@ -43,7 +43,7 @@
  #Step 12 - Recuperamos los archivos que tenemos en master<br>
  $~ git pull origin master
  
- -----------------  Date: 16 March 2022 ----------------------------------
+ -----------------  Date: 16 March 2022 ---------------------------------- <br>
  #Step 13 - Crear la nueva migraciòn de la tabla productos con sus campos <br>
  $~ php artisan make:migration productos
  
