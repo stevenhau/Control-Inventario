@@ -78,3 +78,13 @@ para poder listarlas dentro de la vista index con una paginacion de 5. <br>
 
         $productos['productos']=Productos::paginate(5);
         return view('productos.index',$productos);
+        
+#Step 20 - Se agrego la función borrar dentro del controlador de productos
+       
+        Productos::destroy($id);
+        return redirect('productos');
+        
+ #Step 21 - Se agrego la funcion de editar dentro del controlador de productos pasando por parametro el id para buscarlo
+ 
+        $productos = Productos::findOrFail($id);
+        return view('productos.edit', compact('productos'));
