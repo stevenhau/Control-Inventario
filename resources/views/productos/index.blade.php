@@ -17,10 +17,12 @@
             <td>{{ $producto->imagen }}</td>
             <td>{{ $producto->folio }}</td>
             <td>{{ $producto->nombre }}</td>
-            <td>{{ $producto->alamacen }}</td>
+            <td>{{ $producto->alamcen }}</td>
             <td>{{ $producto->fecha_entrada }}</td>
             <td>{{ $producto->fecha_salida }}</td>
-            <td>Editar | 
+            <td>
+                <a href="{{ url('/productos/'.$producto->id.'/edit') }}">Editar</a>    
+            | 
 
                 <form action="{{ url('/productos/'.$producto->id) }}" method="post">
                     @csrf

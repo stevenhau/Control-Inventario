@@ -64,9 +64,11 @@ class ProductosController extends Controller
      * @param  \App\Models\Productos  $productos
      * @return \Illuminate\Http\Response
      */
-    public function edit(Productos $productos)
+    public function edit($id)
     {
         //
+        $productos = Productos::findOrFail($id);
+        return view('productos.edit', compact('productos'));
     }
 
     /**
@@ -76,9 +78,14 @@ class ProductosController extends Controller
      * @param  \App\Models\Productos  $productos
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Productos $productos)
+    public function update(Request $request, $id)
     {
-        //
+        //Aqui se recepcionan los datos desde el formulario de la vista (productos/crear))
+        $datosProductos = request()->except(['_token','_method']);
+        Productos::where('id','=',$id)->update($datosProductos);
+        
+        $productos = Productos::findOrFail($id);
+        return view('productos.edit', compact('productos'));
     }
 
     /**
