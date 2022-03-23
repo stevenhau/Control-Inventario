@@ -99,3 +99,7 @@ para poder listarlas dentro de la vista index con una paginacion de 5. <br>
  
  #Step 23 - Ahora para que laravel pueda mostrar la imagen correctamente escribimos la siguiente instruccion<br>
   $~ php artisan storage:link
+  
+  #Step 24 - Para usar el formulario tanto en el edit como en el create en el value ponemos un condicional para ver si esta vacio o no.
+      
+      <input type="text" name="nombre" value="{{ isset($productos->nombre)?$productos->nombre:'' }}" id="nombre">
