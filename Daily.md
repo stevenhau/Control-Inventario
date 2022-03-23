@@ -88,3 +88,14 @@ para poder listarlas dentro de la vista index con una paginacion de 5. <br>
  
         $productos = Productos::findOrFail($id);
         return view('productos.edit', compact('productos'));
+        
+-----------------  Date: 23 March 2022 ---------------------------------- <br>
+
+ #Step 22 - Se agrega el html para mostrar la imagen <br>
+            
+            <td>
+                <img src="{{ asset('storage').'/'.$producto->imagen}}" alt="img_{{ $producto->nombre }}" width="100px">
+            </td>
+ 
+ #Step 23 - Ahora para que laravel pueda mostrar la imagen correctamente escribimos la siguiente instruccion<br>
+  $~ php artisan storage:link
