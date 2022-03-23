@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Productos;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProductosController extends Controller
 {
@@ -82,8 +83,13 @@ class ProductosController extends Controller
     {
         //Aqui se recepcionan los datos desde el formulario de la vista (productos/crear))
         $datosProductos = request()->except(['_token','_method']);
-        Productos::where('id','=',$id)->update($datosProductos);
         
+        if($request->hasFile('imagen')){
+            $productos = Productos::findOrFail($id);
+            Storage::delete('public/'.$productos->imagen);
+            $datosProductos['imagen']=$request->file('imagen')->store('uploads','public');
+        }
+        Productos::where('id','=',$id)->update($datosProductos);
         $productos = Productos::findOrFail($id);
         return view('productos.edit', compact('productos'));
     }

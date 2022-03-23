@@ -14,7 +14,9 @@
         @foreach( $productos as $producto )
         <tr>
             <td>{{ $producto->id }}</td>
-            <td>{{ $producto->imagen }}</td>
+            <td>
+                <img src="{{ asset('storage').'/'.$producto->imagen}}" alt="img_{{ $producto->nombre }}" width="100px">
+            </td>
             <td>{{ $producto->folio }}</td>
             <td>{{ $producto->nombre }}</td>
             <td>{{ $producto->alamcen }}</td>
