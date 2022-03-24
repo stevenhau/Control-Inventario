@@ -15,7 +15,7 @@ use App\Http\Controllers\ProductosController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 //Esta es la forma de hacerlo especificando cada ruta clase segudo del metodo
@@ -29,4 +29,8 @@ Route::resource('productos',ProductosController::class);
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [ProductosController::class, 'index'])->name('home');
+
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/', [ProductosController::class, 'index'])->name('home');
+});

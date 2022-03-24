@@ -45,7 +45,8 @@ class ProductosController extends Controller
             $datosProductos['imagen']=$request->file('imagen')->store('uploads','public');
         }
         Productos::insert($datosProductos);
-        return response()->json($datosProductos);
+        //return response()->json($datosProductos);
+        return redirect('productos')->with('mensaje', 'Prodcuto creado exitosamente');
     }
 
     /**
@@ -102,8 +103,14 @@ class ProductosController extends Controller
      */
     public function destroy($id)
     {
-        //
-        Productos::destroy($id);
-        return redirect('productos');
+        //Busca el producto por el id
+        $productos = Productos::findOrFail($id);
+        //Condicional para eleiminar la imagen de la carpeta del servidor
+        if(Storage::delete('public/'.$productos->imagen)){
+            Productos::destroy($id);
+        }
+        //Retorna un redireccionamiento hacia listado productos
+        return redirect('productos')->with('mensaje', 'Se elimino el producto ' . $productos->nombre);
     }
 }
+

@@ -1,3 +1,4 @@
+    <h1>{{ $modo }} Productos</h1>
     <br>
     <label for="nombre">Nombre:</label>
     <input type="text" name="nombre" value="{{ isset($productos->nombre)?$productos->nombre:'' }}" id="nombre"><br>
@@ -14,4 +15,5 @@
     <input type="text" name="fecha_entrada" value="{{ isset($productos->fecha_entrada)?$productos->fecha_entrada:'' }}" id="fecha_entrada"><br>
     <label for="fecha_salida">Fecha salida</label>
     <input type="text" name="fecha_salida" value="{{ isset($productos->fecha_salida)?$productos->fecha_salida:'' }}" id="fecha_salida"><br>
-    <input type="submit" value="Guardar">
+    <input type="submit" value="{{ $modo }}">
+    <a href="{{ url('productos') }}">Volver</a>

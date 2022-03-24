@@ -1,4 +1,8 @@
 <h1>Productos</h1>
+<a href="{{ url('productos/create') }}">Agregar producto</a>
+    @if(Session::has('mensaje'))
+        {{ Session::get('mensaje') }}
+    @endif
 <table border=1>
     <thead>
         <th>#</th>
