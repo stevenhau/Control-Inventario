@@ -103,3 +103,25 @@ para poder listarlas dentro de la vista index con una paginacion de 5. <br>
   #Step 24 - Para usar el formulario tanto en el edit como en el create en el value ponemos un condicional para ver si esta vacio o no.
       
       <input type="text" name="nombre" value="{{ isset($productos->nombre)?$productos->nombre:'' }}" id="nombre">
+
+-----------------  Date: 24 March 2022 ---------------------------------- <br>
+#Step 25 - Para borrar la imagen del servidor es necesario hacer un condicional en el metodo destroy:
+   
+    public function destroy($id)
+        {
+            //Busca el producto por el id
+            $productos = Productos::findOrFail($id);
+            //Condicional para eleiminar la imagen de la carpeta del servidor
+            if(Storage::delete('public/'.$productos->imagen)){
+                Productos::destroy($id);
+            }
+            //Retorna un redireccionamiento hacia listado productos
+            return redirect('productos');
+        }
+
+#Step 26 - Agregar mensajes cuando se cree, se actualize o se borre un producto, primero dentro del index escribimos un condicional con estilo blade:
+
+    @if(Session::has('mensaje'))
+        {{ Session::get('mensaje') }}
+    @endif
+
