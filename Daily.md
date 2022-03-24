@@ -125,3 +125,7 @@ para poder listarlas dentro de la vista index con una paginacion de 5. <br>
         {{ Session::get('mensaje') }}
     @endif
 
+#Step 27 - Dentro del controlador en las redirecciones agregamos el mensaje segun el metodo correspondiente
+  
+       return redirect('productos')->with('mensaje', 'Se elimino el producto ' . $productos->nombre);
+       
