@@ -1,9 +1,14 @@
+@extends('layouts.app')
+
+@section('content')
+<div class="container">
 <h1>Productos</h1>
-<a href="{{ url('productos/create') }}">Agregar producto</a>
+<a href="{{ url('productos/create') }}" class="btn btn-primary">Agregar producto</a>
     @if(Session::has('mensaje'))
         {{ Session::get('mensaje') }}
     @endif
-<table border=1>
+    <div class="table-responsive">
+<table class="table">
     <thead>
         <th>#</th>
         <th>Imagen</th>
@@ -19,7 +24,7 @@
         <tr>
             <td>{{ $producto->id }}</td>
             <td>
-                <img src="{{ asset('storage').'/'.$producto->imagen}}" alt="img_{{ $producto->nombre }}" width="100px">
+                <img class="img-thumbnail img-fluid" src="{{ asset('storage').'/'.$producto->imagen}}" alt="img_{{ $producto->nombre }}" width="100px">
             </td>
             <td>{{ $producto->folio }}</td>
             <td>{{ $producto->nombre }}</td>
@@ -27,13 +32,13 @@
             <td>{{ $producto->fecha_entrada }}</td>
             <td>{{ $producto->fecha_salida }}</td>
             <td>
-                <a href="{{ url('/productos/'.$producto->id.'/edit') }}">Editar</a>    
+                <a href="{{ url('/productos/'.$producto->id.'/edit') }}" class="btn btn-warning">Editar</a>    
             | 
 
-                <form action="{{ url('/productos/'.$producto->id) }}" method="post">
+                <form action="{{ url('/productos/'.$producto->id) }}" class="d-inline" method="post">
                     @csrf
                     {{ method_field('DELETE') }}
-                    <input type="submit" onclick="return confirm('¿Quieres eliminar el producto?')" value="Eliminar">
+                    <input type="submit" onclick="return confirm('¿Quieres eliminar el producto?')" class="btn btn-danger" value="Eliminar">
                 </form>
 
             </td>
@@ -41,3 +46,7 @@
         @endforeach
     </tbody>
 </table>
+
+</div>
+</div>
+@endsection

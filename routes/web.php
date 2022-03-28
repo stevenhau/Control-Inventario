@@ -23,11 +23,11 @@ Route::get('/', function () {
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home'); */
 
-Auth::routes();
 //Esta forma agrega todas las rutas segun los metodos creados en el controlador puedes comprobarlo con "php artisan route:list"
-Route::resource('productos',ProductosController::class); 
+Route::resource('productos',ProductosController::class)->middleware('auth'); 
 
-Auth::routes();
+//
+Auth::routes(['register'=>false, 'reset'=>false]);
 
 Route::get('/home', [ProductosController::class, 'index'])->name('home');
 
