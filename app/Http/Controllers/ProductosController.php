@@ -16,7 +16,7 @@ class ProductosController extends Controller
     public function index()
     {
         //
-        $productos['productos']=Productos::paginate(5);
+        $productos['productos']=Productos::paginate(1);
         return view('productos.index',$productos);
     }
 
@@ -92,7 +92,9 @@ class ProductosController extends Controller
         }
         Productos::where('id','=',$id)->update($datosProductos);
         $productos = Productos::findOrFail($id);
-        return view('productos.edit', compact('productos'));
+        //return view('productos.edit', compact('productos'));
+        return redirect('productos')->with('mensaje', 'Se actualizo el producto ');
+
     }
 
     /**

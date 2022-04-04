@@ -3,10 +3,23 @@
 @section('content')
 <div class="container">
 <h1>Productos</h1>
-<a href="{{ url('productos/create') }}" class="btn btn-primary">Agregar producto</a>
+
+
     @if(Session::has('mensaje'))
-        {{ Session::get('mensaje') }}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ Session::get('mensaje') }}
+            
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+    </div>
+   
     @endif
+            
+
+<a href="{{ url('productos/create') }}" class="btn btn-primary mb-4">Agregar producto</a>
+
+    
     <div class="table-responsive">
 <table class="table">
     <thead>
@@ -46,7 +59,7 @@
         @endforeach
     </tbody>
 </table>
-
+{!! $productos->links() !!}
 </div>
 </div>
 @endsection
