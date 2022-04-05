@@ -39,6 +39,22 @@ class ProductosController extends Controller
      */
     public function store(Request $request)
     {
+
+        $campos=[
+            'nombre'=>'required|string|max:100',
+            'folio'=>'required|string|max:10',
+            'alamcen'=>'required|string|max:100',
+            'fecha_entrada'=>'required|string|max:10',
+            'fecha_salida'=>'required|string|max:10',
+            'imagen'=>'required|max:10000|mimes:jpeg,png,jpg'
+        ];
+        $mensaje=[
+            'required'=>'El :attribute es requerido',
+            'imagen.required'=>'La imagen es requerida'
+        ];
+
+        $this->validate($request, $campos,$mensaje);
+
         //Aqui se recepcionan los datos desde el formulario de la vista (productos/crear))
         $datosProductos = request()->except('_token');
         if($request->hasFile('imagen')){
