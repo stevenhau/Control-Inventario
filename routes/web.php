@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProductosController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,13 +15,22 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
+//Esta es la forma de hacerlo especificando cada ruta clase segudo del metodo
+/* Route::get('/productos/create', [App\Http\Controllers\ProductosController::class, 'create']);
 Auth::routes();
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home'); */
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Esta forma agrega todas las rutas segun los metodos creados en el controlador puedes comprobarlo con "php artisan route:list"
+Route::resource('productos',ProductosController::class)->middleware('auth'); 
 
-Auth::routes();
+//
+Auth::routes(['register'=>false, 'reset'=>false]);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [ProductosController::class, 'index'])->name('home');
+
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/', [ProductosController::class, 'index'])->name('home');
+});
