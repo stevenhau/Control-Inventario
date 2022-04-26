@@ -27,10 +27,16 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('productos',ProductosController::class)->middleware('auth'); 
 
 //
-Auth::routes(['register'=>false, 'reset'=>false]);
+Auth::routes(['register'=>true, 'reset'=>false]);
 
 Route::get('/home', [ProductosController::class, 'index'])->name('home');
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('/', [ProductosController::class, 'index'])->name('home');
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 });
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+

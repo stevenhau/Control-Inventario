@@ -18,11 +18,19 @@
 </div>
 </div>
 <div class="form-group row">
-<div class="col-sm-10">
-    <label for="alamacen" class="col-form-label">Almacen:</label>
-    <input type="text" class="form-control" name="alamcen" value="{{ isset($productos->alamcen)?$productos->alamcen:'' }}" id="alamcen">
+    <div class="col-sm-10">
+        <label for="alamacen" class="col-form-label">Almacen:</label>
+        <input type="text" class="form-control" name="alamcen" value="{{ isset($productos->alamcen)?$productos->alamcen:'' }}" id="alamcen">
+    </div>
 </div>
+
+<div class="form-group row">
+    <div class="col-sm-10">
+        <label for="precio" class="col-form-label">Precio:</label>
+        <input type="text" class="form-control" name="precio" value="{{ isset($productos->precio)?$productos->precio:'' }}" id="precio">
+    </div>
 </div>
+
 <div class="form-group row">
 <div class="col-sm-10">
     <label for="imagen" class="col-form-label">Imagen</label>  

@@ -21,6 +21,7 @@ class CreateProductosTable extends Migration
             $table->string('imagen');
             $table->string('fecha_entrada');
             $table->string('fecha_salida');
+            $table->float('precio');
             $table->timestamps();
         });
     }
